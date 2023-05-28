@@ -34,8 +34,8 @@ void MouseFollow()
 - Secondly I try to receive outputs from Arduino, and control the point light move. Here is the code: (in Unity)
 ```C#
 SerialPort serialPort = new SerialPort("COM3", 115200);
-float LightPosX;
-float LightPosY;
+float lightPosX;
+float lightPosY;
 void Start(){
   serialPort.Open();
 }
