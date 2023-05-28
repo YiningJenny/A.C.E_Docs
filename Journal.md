@@ -4,12 +4,85 @@
 ## 26th May
 - Test gyro sensor with Zhou and Xiao, connect my laptop to projector
 - Test conductive rubber tube(resistance) with Lieven and Zhou
+
+Testing video: (https://youtu.be/PiEtQ_JJlOA)
+
+![1b9a7f806c703df14e0a3e3522dcc93](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/3dd99f09-69fe-499d-a10e-5f412a866fc9)
+
+- Firstly we attached the Gyro sensor to the bow and tested the game by connecting my laptop to the projector. It is clear from the video that the sensor can control the Unity point light movement, but it is very insensitive.
+
+![9471701356730ad66093982096e3ced](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/29fa33f3-82fa-47d8-94b0-c68ffb556e1e)
+- We tested the conductive resistance (we wanted to replace the bowstring with this conductive resistance to make a determination with the gyro sensor). We tested the change in resistance between the relaxed and strained state to confirm that it would work for our project. The Value changed slightly, but I think I can simply use them by calculating.
+- I asked Lieven and Seamus about gyro sensor and fix the insensibility issue. I think the problem lies in how I receive and process the data transferred from Unity to Arduino.
+
+**My previous code block in Arduino: (Here I've only shown the part that went wrong, not the whole code)**
+```C++
+  Serial.print("X:");
+  Serial.println(event.orientation.x, 4);
+  Serial.print("Y:");
+  Serial.println(event.orientation.y, 4);
+  Serial.print("Z:");
+  Serial.println(event.orientation.z, 4);
+```
+
+**My previous code block in Unity:**
+```C#
+SerialPort serialPort = new SerialPort("COM3", 115200);
+string data = serialPort.ReadLine();// ReadByte();
+if (data != ""){
+    if (data.StartsWith("X:"))
+    {
+        string[] splitData = data.Split(':');
+        float xValue = float.Parse(splitData[1]);
+        print(xValue);
+    }else if(data.StartsWith("Y:")){
+        string[] splitData = data.Split(':');
+        float yValue = float.Parse(splitData[1]);
+        print(yValue);
+    }
+```
+
+This code structure means that this method is called once per frame, each time gets either the X value or the Y value, but it does not get X and Y in regular sequence; instead, it is completely random. That's why the output values in Arduino was quite fluent and smooth but not in Unity.
+
+**This is my Arduino code afterwards:**
+```C++
+  Serial.print(event.orientation.x, 4);
+  Serial.print(",");
+  Serial.print(event.orientation.y, 4);
+  Serial.print(",");
+  Serial.println(event.orientation.z, 4);
+```
+
+**My Unity code afterwards:**
+```C#
+Vector3 lightPos;
+public void CheckArduino()
+    {
+        string data = sp.ReadLine();// ReadByte();
+        string[] splitData1 = data.Split(',');
+        float xValue = float.Parse(splitData1[0]);
+        float yValue = float.Parse(splitData1[1]);
+        float zValue = float.Parse(splitData1[2]);
+        lightPos = new Vector3(-1*((xValue/360)*100-50), (yValue+45)/2+10, -2.5f);
+        print(lightPos);
+    }
+```
+
+![53a86f2e74c8570977789344289b028](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/d0e29a14-a29e-4d05-bf9e-270f7039cf7a)
+
+- After solving the value transmission problem we discussed how the gyro sensor works. The value it outputs from Arduino is the absolute rotation angle and in order to convert the angle value into length coordinates I need to normalise it, which I have calculated as shown in the diagram and code above. I don't think I've followed the most correct formula for it, I'm terrible at maths. But I just kept it since it seems to work for the project so far. I forget to take a test video for this successful version, but I took a picture of how we attached gyro sensor to bow. The sensor must be in this position, in this direction, otherwise it will be shown in the game as moving in the opposite direction.
+
+![d574d4bd558e7c993a3ce09eb7f7873](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/18592642-2319-4817-a12b-3285350513de)
+
+
 ## 27th May 
 Current game flow recording: (https://github.com/YiningJenny/A.C.E_Docs/blob/main/gameRecord-27May.mp4)
 
+In case the github link doesn't work: (https://youtu.be/yf2vd75wkXg)
+
 
 ![image](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/71fc7331-f1cd-4fa6-abdf-3cc52016aa80)
-Our game starts with a random text that appears at the top of the screen accompanied by a sound hint, and the player has to choose the correct character based on the hint. Inspired by James' audio lecture, I think we can also add some background sound effects to make a more immersive environment, such as the sound of water running, rain, etc., depending on the meaning of the text.
+Our game starts with a random text that appears at the top of the screen accompanied by a sound hint, and the player has to choose the correct character based on the hint. Actually we didn't realize that sound effects can influent and enhance game experience that much. But inspired by James' audio lecture, I think we can also add some background sound effects to make a more immersive environment, such as the sound of water running, rain, etc., depending on the meaning of the text. It also helps player understand and remember the chinese character.
 ![image](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/37d86c8d-11c7-4e11-a0db-5a1ebf8eb411)
 ![image](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/1b6e0b57-e467-440a-aab5-0888645e5158)
 There are different animations for incorrect and correct choices, and if player chooses correctly, it leads to the next level. By the way, all these interactions will be done by sensors in the future, but for now I just use mouse clicks instead.
@@ -24,6 +97,9 @@ I create animation for each word model and record the movement by add key frame.
 First I create a new list to hold all the words, then I use the indexed list to get the int value of each word
 ```C#
 public List<GameObject> words = new List<GameObject>();
+public int wordIndex;
+Vector3 spawnPosition;
+
 public void SpawnWord()
     {
         spawnPosition = new Vector3(0f, 3.6f, -1f);
@@ -35,6 +111,7 @@ public void SpawnWord()
 ```
 Then check mouse click and target each word by position. Here I made a seemingly redundant step where I called the mouse position from the LightController class. That's because mouse click and mouse position will be replaced by sensor trigger in the future, I need the sensor value from LightController. I use Invoke() here for animation playing. In this function I also activate "great" or "try again" animation.
 ```C#
+public LightController lightController;
 if (wordIndex == 0 && Input.GetMouseButtonDown(0))
         {
             if (4.7f < lightController.mousePosition.x && lightController.mousePosition.x < 8.64f && lightController.mousePosition.y < 6.37f && lightController.mousePosition.y > 2.75f)
@@ -63,3 +140,4 @@ void NextLevel()
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 ```
+***All of the artwork used in the game came from group member Amy, but I found watermarks on the background images while I was tweaking the game. They look generated  from AI, although I was not told about this at all. I have informed Amy and will replace any watermarked images in the future.***
