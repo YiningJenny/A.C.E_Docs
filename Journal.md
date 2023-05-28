@@ -42,7 +42,7 @@ if (data != ""){
     }
 ```
 
-This code structure means that this method is called once per frame, each time gets either the X value or the Y value, but it does not get X and Y in regular sequence; instead, it is completely random. That's why the output values in Arduino was quite fluent and smooth but not in Unity.
+This code structure means that this function is called once per frame, each time gets either the X value or the Y value, but it does not get X and Y in regular sequence; instead, it is completely random. That's why the output values in Arduino was quite fluent and smooth but not in Unity.
 
 **This is my Arduino code afterwards:**
 ```C++
