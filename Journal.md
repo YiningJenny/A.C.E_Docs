@@ -1,6 +1,77 @@
+# Week 6
+- Beginning of Arduino and Unity exploring.
+## 19th May
+- Get Arduino code and gyro sensor from Zhou. Get all 3D word models from Zhou and Xiao.
+- Since we need to import 3D models to a 2D Unity project, there is no light in the scene, we met rendering issue. 3D models look like 2D image
+
+![image](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/a001d41b-13fc-4030-b002-07df51603c0b)
+
+- To render 3D models, we need light. As the background was bright, the model was not rendered well, so I thought of adding a black translucent mask to the background.
+
+![image](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/0b7f78c9-3b02-4763-8aee-1d66344859f8)
+
+- I tried different light effects, but point light works best for now. I want to try combining different color of lights to match background better.
+
+## 20th May
+
+
+
+- Firstly I try to control the point light by mouse position. Here is how I code:
+```C#
+public Vector3 mousePosition;
+void Update()
+    {
+        MouseFollow();
+    }
+
+void MouseFollow()
+    {
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = -3f;
+        transform.position = mousePosition;
+    }
+```
+- Secondly I try to receive outputs from Arduino, and control the point light move. Here is the code: (in Unity)
+```C#
+SerialPort serialPort = new SerialPort("COM3", 115200);
+float LightPosX;
+float LightPosY;
+void Start(){
+  serialPort.Open();
+}
+
+void Update()
+    {
+        MouseFollow();
+        CheckArduino();
+    }
+
+public void CheckArduino(){
+  string data = serialPort.ReadLine();// ReadByte();
+  if (data != ""){
+      if (data.StartsWith("X:"))
+      {
+          string[] splitData = data.Split(':');
+          float xValue = float.Parse(splitData[1]);
+          print(xValue);
+          lightPosX = xValue;
+      }else if(data.StartsWith("Y:")){
+          string[] splitData = data.Split(':');
+          float yValue = float.Parse(splitData[1]);
+          print(yValue);
+          lightPosY = yValue;
+      }
+      transform.position = new Vector3(lightPosX, lightPosY, -2.5f);
+```
+
+Test video link: (https://youtu.be/hcRylLPXoEU)
 # Week 7
 - Test and combine all assets in Unity(2D sprites and 3D models)
 - Implementing scene switching and animation interactions based on game flowcharts(from Zhou).
+
+## 25th May
+- I got background images from Amy.
+
 ## 26th May
 - Test gyro sensor with Zhou and Xiao, connect my laptop to projector
 - Test conductive rubber tube(resistance) with Lieven and Zhou
@@ -68,6 +139,8 @@ public void CheckArduino()
     }
 ```
 
+- By this way I can receive a vector3 coordinate from Arduino per frame and use it directly, much more efficiency.
+
 ![53a86f2e74c8570977789344289b028](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/d0e29a14-a29e-4d05-bf9e-270f7039cf7a)
 
 - After solving the value transmission problem we discussed how the gyro sensor works. The value it outputs from Arduino is the absolute rotation angle and in order to convert the angle value into length coordinates I need to normalise it, which I have calculated as shown in the diagram and code above. I don't think I've followed the most correct formula for it, I'm terrible at maths. But I just kept it since it seems to work for the project so far. I forget to take a test video for this successful version, but I took a picture of how we attached gyro sensor to bow. The sensor must be in this position, in this direction, otherwise it will be shown in the game as moving in the opposite direction.
@@ -76,6 +149,8 @@ public void CheckArduino()
 
 
 ## 27th May 
+- Almost finish all in Unity!
+
 Current game flow recording: (https://github.com/YiningJenny/A.C.E_Docs/blob/main/gameRecord-27May.mp4)
 
 In case the github link doesn't work: (https://youtu.be/yf2vd75wkXg)
@@ -140,4 +215,4 @@ void NextLevel()
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 ```
-***All of the artwork used in the game came from group member Amy, but I found watermarks on the background images while I was tweaking the game. They look generated  from AI, although I was not told about this at all. I have informed Amy and will replace any watermarked images in the future.***
+***All of the artwork used in the game came from group member Amy and Xiao, but I found watermarks on the background images from Amy while I was adjusting the game. They look generated  from AI, although I was not told about this at all. I have informed Amy and will replace any watermarked images in the future.***
