@@ -47,22 +47,25 @@ void Update()
     }
 
 public void CheckArduino(){
-  string data = serialPort.ReadLine();// ReadByte();
-  if (data != ""){
-      if (data.StartsWith("X:"))
-      {
-          string[] splitData = data.Split(':');
-          float xValue = float.Parse(splitData[1]);
-          print(xValue);
-          lightPosX = xValue;
-      }else if(data.StartsWith("Y:")){
-          string[] splitData = data.Split(':');
-          float yValue = float.Parse(splitData[1]);
-          print(yValue);
-          lightPosY = yValue;
-      }
-      transform.position = new Vector3(lightPosX, lightPosY, -2.5f);
+    string data = serialPort.ReadLine();// ReadByte();
+    if (data != ""){
+        if (data.StartsWith("X:"))
+        {
+            string[] splitData = data.Split(':');
+            float xValue = float.Parse(splitData[1]);
+            print(xValue);
+            lightPosX = xValue;
+        }else if(data.StartsWith("Y:")){
+            string[] splitData = data.Split(':');
+            float yValue = float.Parse(splitData[1]);
+            print(yValue);
+            lightPosY = yValue;
+        }
+        transform.position = new Vector3(lightPosX, lightPosY, -2.5f);
+    }
+}
 ```
+- The movement is very slow, but the sensor is really controlling the point light.
 
 Test video link: (https://youtu.be/hcRylLPXoEU)
 # Week 7
@@ -111,6 +114,7 @@ if (data != ""){
         float yValue = float.Parse(splitData[1]);
         print(yValue);
     }
+}
 ```
 
 This code structure means that this function is called once per frame, each time gets either the X value or the Y value, but it does not get X and Y in regular sequence; instead, it is completely random. That's why the output values in Arduino was quite fluent and smooth but not in Unity.
