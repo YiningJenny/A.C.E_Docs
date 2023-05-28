@@ -1,6 +1,29 @@
+# Week 4
+- Discuss and define the iterative prototype of the project, divide the work and establish a timetable. 
+- Search for online resources to specify a project implementation plan.
+## 3rd May （待补充）
+- First group discussion, define the prototype of project.
+- Timetable schedule and division of labour plan.
+## 4th May
+Tutorial with Julia, here are recourses and links that might be useful:
+- Arduino sensor: conductive wire, (https://www.adafruit.com/product/519), (https://learn.adafruit.com/thermistor), (https://www.st.com/en/mems-and-sensors/lis3dh.html)
+- Arduino sensor: string motor sensor,
+- Unique texture in blender: https://www.youtube.com/watch?v=lAnUI-eTefE
+- Blender how to export FBX with texture: https://www.youtube.com/watch?v=kEP34CbPWUo
+- Import model with texture into Unity: (https://www.cgtrader.com/tutorials/1542-importing-an-fbx-file-into-unity-with-textures)
+# Week 5
+- Defining the art style， detailing project plan
+## 10th May （待补充）
+- 确定要建模的字
+- 确定游戏流程
+- 确定美术风格
 # Week 6
+- Determining the final output model for the project, identifying test and filming locations and purchasing materials
 - Beginning of Arduino and Unity exploring.
 ## 19th May
+- Order Arduino sensors and other materials that we need.
+
+Conductive resistance link: (https://www.ebay.co.uk/itm/224068660324)
 - Get Arduino code and gyro sensor from Zhou. Get all 3D word models from Zhou and Xiao.
 - Since we need to import 3D models to a 2D Unity project, there is no light in the scene, we met rendering issue. 3D models look like 2D image
 
@@ -71,6 +94,9 @@ Test video link: (https://youtu.be/hcRylLPXoEU)
 # Week 7
 - Test and combine all assets in Unity(2D sprites and 3D models)
 - Implementing scene switching and animation interactions based on game flowcharts(from Zhou).
+
+## 24th May
+- I got game flow chart from Zhou
 
 ## 25th May
 - I got background images from Amy.
