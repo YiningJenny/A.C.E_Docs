@@ -61,8 +61,8 @@ public void CheckArduino(){
             print(yValue);
             lightPosY = yValue;
         }
-        transform.position = new Vector3(lightPosX, lightPosY, -2.5f);
     }
+    transform.position = new Vector3(lightPosX, lightPosY, -2.5f);
 }
 ```
 - The movement is very slow, but the sensor is really controlling the point light.
@@ -109,10 +109,12 @@ if (data != ""){
         string[] splitData = data.Split(':');
         float xValue = float.Parse(splitData[1]);
         print(xValue);
+        lightPosX = xValue;
     }else if(data.StartsWith("Y:")){
         string[] splitData = data.Split(':');
         float yValue = float.Parse(splitData[1]);
         print(yValue);
+        lightPosY = yValue;        
     }
 }
 ```
@@ -130,6 +132,7 @@ This code structure means that this function is called once per frame, each time
 
 **My Unity code afterwards:**
 ```C#
+SerialPort sp = new SerialPort("COM3", 115200);
 Vector3 lightPos;
 public void CheckArduino()
     {
