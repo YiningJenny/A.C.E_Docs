@@ -248,4 +248,3 @@ void NextLevel()
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 ```
-***All of the artwork used in the game came from group member Amy and Xiao, but I found watermarks on the background images from Amy while I was adjusting the game. They look generated  from AI, although I was not told about this at all. I have informed Amy and will replace any watermarked images in the future.***
