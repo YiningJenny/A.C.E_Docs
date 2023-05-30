@@ -248,3 +248,4 @@ void NextLevel()
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 ```
+***Amy通过AI软件调整了背景图像，但是忘记删除水印。所以我们这周开会之后调整为无水印的背景图像。***
