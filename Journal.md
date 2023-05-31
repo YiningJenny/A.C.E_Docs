@@ -101,7 +101,8 @@ Test video link: (https://youtu.be/hcRylLPXoEU)
 ## 25th May
 - I got background images from Amy.
 
-## <a name="26May"></a>26th May
+## <a name="26May">
+</a>26th May
 - Test gyro sensor with Zhou and Xiao, connect my laptop to projector
 - Test conductive rubber tube(resistance) with Lieven and Zhou
 
@@ -253,6 +254,9 @@ void NextLevel()
 ```
 _Amy通过AI软件调整了背景图像，但是忘记删除水印。所以我们这周开会之后调整为无水印的背景图像。_
 ## 30th May
+
+![c4c5c2d0131318ec7afe96829637521](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/dbaf6a47-f7f6-49b6-af51-5cabfb02b382)
+
 Zhou finished three sensors' test seperatly, and combine the sensor to a big breadboard. I check and combine all the code together, also I remove some useless part and format the print out. Here is the _final version_ Arduino code for all sensors:
 
 ```C++
