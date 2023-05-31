@@ -101,8 +101,7 @@ Test video link: (https://youtu.be/hcRylLPXoEU)
 ## 25th May
 - I got background images from Amy.
 
-## <a name="26May">
-</a>26th May
+## <a name="26May"></a>26th May
 - Test gyro sensor with Zhou and Xiao, connect my laptop to projector
 - Test conductive rubber tube(resistance) with Lieven and Zhou
 
@@ -316,6 +315,7 @@ void loop() {
     Serial.print(event.orientation.y, 4);
     Serial.print(",");
     Serial.println(event.orientation.z, 4);
+    // pressure
     Serial.print("Pressure:");
     Serial.println(analogReading);
     delay(50);
