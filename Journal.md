@@ -101,7 +101,7 @@ Test video link: (https://youtu.be/hcRylLPXoEU)
 ## 25th May
 - I got background images from Amy.
 
-## 26th May
+## <a name="26May"></a>26th May
 - Test gyro sensor with Zhou and Xiao, connect my laptop to projector
 - Test conductive rubber tube(resistance) with Lieven and Zhou
 
@@ -176,7 +176,8 @@ public void CheckArduino()
 
 ![53a86f2e74c8570977789344289b028](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/d0e29a14-a29e-4d05-bf9e-270f7039cf7a)
 
-- After solving the value transmission problem we discussed how the gyro sensor works. The value it outputs from Arduino is the absolute rotation angle and in order to convert the angle value into length coordinates I need to normalise it, which I have calculated as shown in the diagram and code above. I don't think I've followed the most correct formula for it, I'm terrible at maths. But I just kept it since it seems to work for the project so far. I forget to take a test video for this successful version, but I took a picture of how we attached gyro sensor to bow. The sensor must be in this position, in this direction, otherwise it will be shown in the game as moving in the opposite direction.
+- After solving the value transmission problem we discussed how the gyro sensor works. The value it outputs from Arduino is the absolute rotation angle and in order to convert the angle value into length coordinates I need to normalise it, which I have calculated as shown in the diagram and code above. I don't think I've followed the most correct formula for it, I'm terrible at maths. But I just kept it since it seems to work for the project so far. 
+- I forget to take a test video for this successful version, but I took a picture of how we attached gyro sensor to bow (show as below). The sensor must be in this position, in this direction, otherwise it will be shown in the game as moving in the opposite direction.
 
 ![d574d4bd558e7c993a3ce09eb7f7873](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/18592642-2319-4817-a12b-3285350513de)
 
@@ -191,9 +192,11 @@ In case the github link doesn't work: (https://youtu.be/yf2vd75wkXg)
 
 ![image](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/71fc7331-f1cd-4fa6-abdf-3cc52016aa80)
 Our game starts with a random text that appears at the top of the screen accompanied by a sound hint, and the player has to choose the correct character based on the hint. Actually we didn't realize that sound effects can influent and enhance game experience that much. But inspired by James' audio lecture, I think we can also add some background sound effects to make a more immersive environment, such as the sound of water running, rain, etc., depending on the meaning of the text. It also helps player understand and remember the chinese character.
+
 ![image](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/37d86c8d-11c7-4e11-a0db-5a1ebf8eb411)
 ![image](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/1b6e0b57-e467-440a-aab5-0888645e5158)
 There are different animations for incorrect and correct choices, and if player chooses correctly, it leads to the next level. By the way, all these interactions will be done by sensors in the future, but for now I just use mouse clicks instead.
+
 ![image](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/540920cb-5b6b-4a75-b745-d7d915ac2162)
 The second level is an animation of the evolution of Chinese characters from ancient to modern times, here in reverse order. I will replace it after group member has updated the animation assets. Again, hit on the text with the mouse instead of sensor, and the animation prompt appears if player succeed. In case of doubt, this level is intended to be understood and remembered by players (who don't know the Chinese character).
 ### Unity modules and code
@@ -248,4 +251,101 @@ void NextLevel()
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 ```
-***Amy通过AI软件调整了背景图像，但是忘记删除水印。所以我们这周开会之后调整为无水印的背景图像。***
+_Amy通过AI软件调整了背景图像，但是忘记删除水印。所以我们这周开会之后调整为无水印的背景图像。_
+## 30th May
+Zhou finished three sensors' test seperatly, and combine the sensor to a big breadboard. I check and combine all the code together, also I remove some useless part and format the print out. Here is the _final version_ Arduino code for all sensors:
+
+```C++
+#include <Wire.h>
+#include "Adafruit_MPR121.h"
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BNO055.h>
+#include <utility/imumaths.h>
+
+// conductive wire
+#ifndef _BV
+#define _BV(bit) (1 << (bit)) 
+#endif
+
+// gyro 
+#define BNO055_SAMPLERATE_DELAY_MS (100)
+Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28, &Wire);
+
+// pressure
+#define FORCE_SENSOR_PIN A0 // the FSR and 10K pulldown are connected to A0
+
+Adafruit_MPR121 cap = Adafruit_MPR121();
+// conductive wire
+uint16_t lasttouched = 0;
+uint16_t currtouched = 0;
+
+void setup() {
+  Serial.begin(115200);
+  
+  //conductive wire
+  // If tied to SDA its 0x5C and if SCL then 0x5D
+  if (!cap.begin(0x5A)) {
+    Serial.println("MPR121 not found, check wiring?");
+    while (1);
+  }
+  Serial.println("MPR121 found!");
+
+  // gyro
+  if(!bno.begin())
+  {
+    Serial.print("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
+    while(1);
+  }
+  bno.setExtCrystalUse(true);
+}
+
+void loop() {
+  // pressure
+  int analogReading = analogRead(FORCE_SENSOR_PIN);
+
+  // gyro
+    sensors_event_t event;
+    bno.getEvent(&event);
+    Serial.print("Vector3,");
+    Serial.print(event.orientation.x, 4);
+    Serial.print(",");
+    Serial.print(event.orientation.y, 4);
+    Serial.print(",");
+    Serial.println(event.orientation.z, 4);
+    Serial.print("Pressure:");
+    Serial.println(analogReading);
+    delay(50);
+    
+  // conductive wire
+  currtouched = cap.touched();
+  
+  for (uint8_t i=0; i<12; i++) {
+    // it if *is* touched and *wasnt* touched before, alert!
+    if ((currtouched & _BV(i)) && !(lasttouched & _BV(i)) ) {
+      //Serial.print(i); 
+      Serial.println("Wire:1");//touched
+    }
+    // if it *was* touched and now *isnt*, alert!
+    if (!(currtouched & _BV(i)) && (lasttouched & _BV(i)) ) {
+      //Serial.print(i); 
+      Serial.println("Wire:0");//released
+    }
+  }
+
+  // reset our state
+  lasttouched = currtouched;
+
+  return; // important!! It works
+    
+  for (uint8_t i=0; i<12; i++) {
+    Serial.print(cap.filteredData(i)); Serial.print("\t");
+  }
+  
+  for (uint8_t i=0; i<12; i++) {
+    Serial.print(cap.baselineData(i)); Serial.print("\t");
+  }
+  delay(50);
+}
+```
+
+I realize that the optimized code from [26th May](#26May) does not work for now. I need to do some further optimization to let Unity know which sensor each output value comes from Arduino. I'll try it tomorrow after Zhou finish soldering.
