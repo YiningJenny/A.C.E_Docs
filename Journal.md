@@ -353,7 +353,8 @@ I realize that the optimized code from [26th May](#26May) does not work for now.
 ## 2nd-3rd Jun
 - We invite friends from class to play our game, and then I found a bug. The "try again" and "great" animation effects appears together, it is not what I expect. (details show as below)
 - Test link: https://youtu.be/HIJAXM3FciU
-- I send the bug to slack technical channel, and get answer from Tom. It might because that the collection of if statements is so complicate that it is hard for Unity to read and it’s bound to cause bugs. Secondly, I was using ```if(){}``` instead of ```else if(){}```, which means it can run after the first one, and they have a similar structure. That's the most probably reason why the two effects appear together.
+- I send the bug to slack technical channel, and get answer from Tom. Firstly, it might because that the collection of if statements is so complicate that it is hard for Unity to read and it’s bound to cause bugs. Secondly, I was using ```if(){}``` instead of ```else if(){}```, which means it can run after the first one, and they have a similar structure. That's the most probably reason why the two effects appear together. 
+- To solve this, I change the structure of the code, by putting pieces of code that occur in more than one place in a function. I create a new function to judge the light position, and return a boolean value, so I don't need to bring a quite long conditional into ```if``` statement. 
 - The optimized code:
 
 ```C#
@@ -389,7 +390,8 @@ public void LightPosition()
         }
     }
     
-    // 触发动画效果和切换场景
+    
+    // trigger animation and switch game scenes
     public void DetectMouseCllick() {
         
         //rain
@@ -397,10 +399,10 @@ public void LightPosition()
             lightController.currentTouch == false && 
             lightController.lastTouch == true)
         {
-            // 放弓音效
+            // bow release sound effect
             bowRelease.SetActive(true);
             Invoke("CloseSoundEffect", 2f);
-            // 触发动画，切换场景
+            // triggerAnimation，switch game scene
             if (rainPos == true)
             {
                 print("you are right");
@@ -419,10 +421,10 @@ public void LightPosition()
             lightController.currentTouch == false && 
             lightController.lastTouch == true)
         {
-            // 放弓音效
+            // bow release sound effect
             bowRelease.SetActive(true);
             Invoke("CloseSoundEffect", 2f);
-            // 触发动画，切换场景
+            // triggerAnimation，switch game scene
             if (sheepPos == true)
             {
                 print("you are right");
@@ -436,7 +438,7 @@ public void LightPosition()
                 Invoke("CloseDialog", 2f);
             }
         }
-        //拉弓音效
+        //bow Pulling Sound Effect
         else if (lightController.currentTouch == true && lightController.lastTouch == false)
         {
             bowPull.SetActive(true);
