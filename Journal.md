@@ -147,15 +147,6 @@ if (data != ""){
 
 This code structure means that this function is called once per frame, each time gets either the X value or the Y value, but it does not get X and Y in regular sequence; instead, it is completely random. That's why the output values in Arduino was quite fluent and smooth but not in Unity.
 
-**This is my Arduino code afterwards:**
-```C++
-  Serial.print(event.orientation.x, 4);
-  Serial.print(",");
-  Serial.print(event.orientation.y, 4);
-  Serial.print(",");
-  Serial.println(event.orientation.z, 4);
-```
-
 **My Unity code afterwards:**
 ```C#
 SerialPort sp = new SerialPort("COM3", 115200);
@@ -349,7 +340,108 @@ void loop() {
     Serial.print(cap.baselineData(i)); Serial.print("\t");
   }
   delay(50);
-}
+} 
 ```
 
 I realize that the optimized code from [26th May](#26May) does not work for now. I need to do some further optimization to let Unity know which sensor each output value comes from Arduino. I'll try it tomorrow after Zhou finish soldering.
+
+# Week 8
+- Finish sodering, link arduino and unity together, test and optimize code.
+## 31th May
+- I get background music from Xiao, I apply it to unity.
+- We try to control unity by arduino, but the conductive wire that we use is very inefficient in conducting electricity. We might need to change another sensor later. Test video: https://www.youtube.com/shorts/A8Jz8CVUf9Y
+## 2nd-3rd Jun
+- We invite friends from class to play our game, and then I found a bug. The "try again" and "great" animation effects appears together, it is not what I expect. (details show as below)
+- Test link: https://youtu.be/HIJAXM3FciU
+- I send the bug to slack technical channel, and get answer from Tom. It might because that the collection of if statements is so complicate that it is hard for Unity to read and it’s bound to cause bugs. Secondly, I was using ```if(){}``` instead of ```else if(){}```, which means it can run after the first one, and they have a similar structure. That's the most probably reason why the two effects appear together.
+- The optimized code:
+
+```C#
+public void LightPosition()
+    {
+        // rain
+        if (lightController.lightPos.x > -14.1f &&
+            lightController.lightPos.x < -8.96f &&
+            lightController.lightPos.y < -1.67f &&
+            lightController.lightPos.y > -8.06f)
+        {
+            rainPos = true;
+            print("rainPos: " + rainPos);
+        }
+
+        else { 
+            rainPos = false;
+            print("rainPos: " + rainPos);
+        }
+
+        // sheep
+        if (lightController.lightPos.x > 2.18f &&
+            lightController.lightPos.x < 6.58f &&
+            lightController.lightPos.y < 2.33f &&
+            lightController.lightPos.y > -1.93f)
+        {
+            sheepPos = true;
+            print("sheepPos: " + sheepPos);
+        }
+        else { 
+            sheepPos = false;
+            print("sheepPos: " + sheepPos);
+        }
+    }
+    
+    // 触发动画效果和切换场景
+    public void DetectMouseCllick() {
+        
+        //rain
+        if (wordIndex == 0 && 
+            lightController.currentTouch == false && 
+            lightController.lastTouch == true)
+        {
+            // 放弓音效
+            bowRelease.SetActive(true);
+            Invoke("CloseSoundEffect", 2f);
+            // 触发动画，切换场景
+            if (rainPos == true)
+            {
+                print("you are right");
+                successDialog.SetActive(true);
+                Invoke("CloseDialog", 3f);//等待3秒后call CloseSuccessDialog
+                Invoke("NextLevel", 3f);
+            }
+            else if(rainPos == false)
+            {
+                tryAgainDialog.SetActive(true);
+                Invoke("CloseDialog", 2f);
+            }
+        }
+        //sheep
+        if (wordIndex == 1 &&
+            lightController.currentTouch == false && 
+            lightController.lastTouch == true)
+        {
+            // 放弓音效
+            bowRelease.SetActive(true);
+            Invoke("CloseSoundEffect", 2f);
+            // 触发动画，切换场景
+            if (sheepPos == true)
+            {
+                print("you are right");
+                successDialog.SetActive(true);
+                Invoke("CloseDialog", 3f);//等待3秒后call CloseSuccessDialog
+                Invoke("NextTwoLevel", 3f);
+            }
+            else if(sheepPos == false)
+            {
+                tryAgainDialog.SetActive(true);
+                Invoke("CloseDialog", 2f);
+            }
+        }
+        //拉弓音效
+        else if (lightController.currentTouch == true && lightController.lastTouch == false)
+        {
+            bowPull.SetActive(true);
+            Invoke("CloseSoundEffect", 2f);
+        }
+        lightController.lastTouch = lightController.currentTouch;
+    }
+```
