@@ -447,3 +447,5 @@ public void LightPosition()
         lightController.lastTouch = lightController.currentTouch;
     }
 ```
+
+- The last one test before final physical construction. Video link: https://youtu.be/5qI0WFmb6ys
