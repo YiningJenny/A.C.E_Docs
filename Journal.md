@@ -450,3 +450,4 @@ public void LightPosition()
 ```
 
 - The last one test before final physical construction. Video link: https://youtu.be/5qI0WFmb6ys
+- By the game test, we find that we don't have a full and smooth game flow. It might influence players' game experience in the future. I need to add user interface, like pause menu, sound volume, quit game etc.
