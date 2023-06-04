@@ -92,11 +92,11 @@ public void CheckArduino(){
 
 Test video link: (https://youtu.be/hcRylLPXoEU)
 # Week 7
-- Test and combine all assets in Unity(2D sprites and 3D models)
+- Test and combine all assets in Unity(2D sprites, 3D models and sound effect)
 - Implementing scene switching and animation interactions based on game flowcharts(from Zhou).
 
 ## 24th May
-- I got game flow chart from Zhou
+- I got game flow chart and sound effect from Zhou
 
 ## 25th May
 - I got background images from Amy.
@@ -243,7 +243,10 @@ void NextLevel()
     }
 ```
 _Amy通过AI软件调整了背景图像，但是忘记删除水印。所以我们这周开会之后调整为无水印的背景图像。_
-## 30th May
+
+# Week 8
+- Finish sodering, link arduino and unity together, test and optimize code.
+## 30th May  combine arduino code together
 
 ![c4c5c2d0131318ec7afe96829637521](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/dbaf6a47-f7f6-49b6-af51-5cabfb02b382)
 
@@ -343,14 +346,12 @@ void loop() {
 } 
 ```
 
-I realize that the optimized code from [26th May](#26May) does not work for now. I need to do some further optimization to let Unity know which sensor each output value comes from Arduino. I'll try it tomorrow after Zhou finish soldering.
+I realize that the optimized code from [26th May](#26May) doesn't work for now. I need to do some further optimization to let Unity know which sensor each output value comes from Arduino. I'll try it tomorrow after Zhou finish soldering.
 
-# Week 8
-- Finish sodering, link arduino and unity together, test and optimize code.
 ## 31th May
 - I get background music from Xiao, I apply it to unity.
 - We try to control unity by arduino, but the conductive wire that we use is very inefficient in conducting electricity. We might need to change another sensor later. Test video: https://www.youtube.com/shorts/A8Jz8CVUf9Y
-## 2nd-3rd Jun
+## 2nd-3rd Jun  test final_final_final version arduino with unity, reconstruct code structure and final prototype test
 - We invite friends from class to play our game, and then I found a bug. The "try again" and "great" animation effects appears together, it is not what I expect. (details show as below)
 - Test link: https://youtu.be/HIJAXM3FciU
 - I send the bug to slack technical channel, and get answer from Tom. Firstly, it might because that the collection of if statements is so complicate that it is hard for Unity to read and it’s bound to cause bugs. Secondly, I was using ```if(){}``` instead of ```else if(){}```, which means it can run after the first one, and they have a similar structure. That's the most probably reason why the two effects appear together. 
