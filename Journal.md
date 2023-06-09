@@ -250,6 +250,9 @@ _Amy通过AI软件调整了背景图像，但是忘记删除水印。所以我�
 
 ![c4c5c2d0131318ec7afe96829637521](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/dbaf6a47-f7f6-49b6-af51-5cabfb02b382)
 
+![df4e709fc5c70e43d7da776a6a0b2aa](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/06ddd256-4663-49ad-a192-28a1553b7333)
+
+
 Zhou finished three sensors' test seperatly, and combine the sensor to a big breadboard. I check and combine all the code together, also I remove some useless part and format the print out. Here is the _final version_ Arduino code for all sensors:
 
 ```C++
