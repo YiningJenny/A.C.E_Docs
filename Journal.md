@@ -93,10 +93,8 @@ Test video link: (https://youtu.be/hcRylLPXoEU)
 - Test and combine all assets in Unity(2D sprites, 3D models and sound effect)
 - Implementing scene switching and animation interactions based on game flowcharts(from Zhou).
 
-## 24th May
+## 24th - 25th May
 - I got game flow chart and sound effect from Zhou
-
-## 25th May
 - I got background images from Amy.
 
 ## <a name="26May"></a>26th May
@@ -161,7 +159,7 @@ public void CheckArduino()
     }
 ```
 
-- By this way I can receive a vector3 coordinate from Arduino per frame and use it directly, much more efficiency.
+- By this way I can receive a vector3 coordinate from Arduino per frame and use it directly, much more efficiency. 
 
 ![53a86f2e74c8570977789344289b028](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/d0e29a14-a29e-4d05-bf9e-270f7039cf7a)
 
@@ -171,7 +169,7 @@ public void CheckArduino()
 ![d574d4bd558e7c993a3ce09eb7f7873](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/18592642-2319-4817-a12b-3285350513de)
 
 
-## 27th May 
+## 27th May - full game float
 - Almost finish all in Unity!
 
 Current game flow recording: (https://github.com/YiningJenny/A.C.E_Docs/blob/main/gameRecord-27May.mp4)
@@ -240,7 +238,7 @@ void NextLevel()
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 ```
-_Amy通过AI软件调整了背景图像，但是忘记删除水印。所以我们这周开会之后调整为无水印的背景图像。_
+_Amy adjusted the background image via AI software but forgot to remove the watermark. So we adjusted the background image to a watermark-free one after our meeting this week._
 
 # Week 8
 - Finish sodering, link arduino and unity together, test and optimize code.
@@ -409,7 +407,7 @@ public void LightPosition()
             {
                 print("you are right");
                 successDialog.SetActive(true);
-                Invoke("CloseDialog", 3f);//等待3秒后call CloseSuccessDialog
+                Invoke("CloseDialog", 3f); // wait for 3s and call CloseSuccessDialog
                 Invoke("NextLevel", 3f);
             }
             else if(rainPos == false)
@@ -431,7 +429,7 @@ public void LightPosition()
             {
                 print("you are right");
                 successDialog.SetActive(true);
-                Invoke("CloseDialog", 3f);//等待3秒后call CloseSuccessDialog
+                Invoke("CloseDialog", 3f); // wait for 3s and call CloseSuccessDialog
                 Invoke("NextTwoLevel", 3f);
             }
             else if(sheepPos == false)
@@ -453,5 +451,29 @@ public void LightPosition()
 - The last one test before final physical construction. Video link: https://youtu.be/5qI0WFmb6ys
 - By the game test, we find that we don't have a full and smooth game flow. It might influence players' game experience in the future. I need to add user interface, like pause menu, sound volume, quit game etc.
 
-# 5th-6th June - Build physical environment and test
+# Week 9 - physical construction and video filming
+## 5th-6th June - Build physical environment and test
 - modify code and scene depend on physical environment. 
+- Add "Game Start" menu and "Pause" menu to increase the integrity of the game and enhance the user experience.
+
+![image](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/e4fd04c6-ba3a-48fc-b21c-706e31614a0a)
+
+- This is how I literaly pause and resume the game: 
+
+```C#
+    public void PauseGame()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+```
+
+- I suggest that we can design the end screen of the game in a format similar to the rolling credits of a movie, and include photos showcasing behind-the-scenes moments of game production. This way, I would like to take the opportunity to express my gratitude to everyone who has put effort into this game.
+
+![image](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/fc303f9e-7e6a-42b3-97f3-02879a525314)
