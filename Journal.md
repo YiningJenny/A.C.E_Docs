@@ -8,22 +8,22 @@
 Tutorial with Julia, here are recourses and links that might be useful:
 - Arduino sensor: conductive wire, (https://www.adafruit.com/product/519), (https://learn.adafruit.com/thermistor), (https://www.st.com/en/mems-and-sensors/lis3dh.html)
 - Arduino sensor: string motor sensor,
-- Unique texture in blender: https://www.youtube.com/watch?v=lAnUI-eTefE
-- Blender how to export FBX with texture: https://www.youtube.com/watch?v=kEP34CbPWUo
-- Import model with texture into Unity: (https://www.cgtrader.com/tutorials/1542-importing-an-fbx-file-into-unity-with-textures)
-# Week 5
+- [Unique texture in blender](https://www.youtube.com/watch?v=lAnUI-eTefE)
+- [Blender how to export FBX with texture](https://www.youtube.com/watch?v=kEP34CbPWUo)
+- [Import model with texture into Unity](https://www.cgtrader.com/tutorials/1542-importing-an-fbx-file-into-unity-with-textures)
+# Week 5 - ideation and concept
 - Defining the art style， detailing project plan
 ## 10th May （待补充）
 - 确定要建模的字
 - 确定游戏流程
 - 确定美术风格
-# Week 6
+# Week 6 - Arduino and Unity Exploration
 - Determining the final output model for the project, identifying test and filming locations and purchasing materials
 - Beginning of Arduino and Unity exploring.
 ## 19th May
 - Order Arduino sensors and other materials that we need.
 
-Conductive resistance link: (https://www.ebay.co.uk/itm/224068660324)
+[Conductive resistance link](https://www.ebay.co.uk/itm/224068660324)
 - Get Arduino code and gyro sensor from Zhou. Get all 3D word models from Zhou and Xiao.
 - Since we need to import 3D models to a 2D Unity project, there is no light in the scene, we met rendering issue. 3D models look like 2D image
 
@@ -35,9 +35,7 @@ Conductive resistance link: (https://www.ebay.co.uk/itm/224068660324)
 
 - I tried different light effects, but point light works best for now. I want to try combining different color of lights to match background better.
 
-## 20th May
-
-
+## 20th May - Construstion in Unity
 
 - Firstly I try to control the point light by mouse position. Here is how I code:
 ```C#
@@ -246,7 +244,7 @@ _Amy通过AI软件调整了背景图像，但是忘记删除水印。所以我�
 
 # Week 8
 - Finish sodering, link arduino and unity together, test and optimize code.
-## 30th May  combine arduino code together
+## 30th May - combine arduino code together
 
 ![c4c5c2d0131318ec7afe96829637521](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/dbaf6a47-f7f6-49b6-af51-5cabfb02b382)
 
@@ -354,7 +352,7 @@ I realize that the optimized code from [26th May](#26May) doesn't work for now. 
 ## 31th May
 - I get background music from Xiao, I apply it to unity.
 - We try to control unity by arduino, but the conductive wire that we use is very inefficient in conducting electricity. We might need to change another sensor later. Test video: https://www.youtube.com/shorts/A8Jz8CVUf9Y
-## 2nd-3rd Jun  test final_final_final version arduino with unity, reconstruct code structure and final prototype test
+## 2nd-3rd Jun - test final_final_final version arduino with unity, reconstruct code structure and final prototype test
 - We invite friends from class to play our game, and then I found a bug. The "try again" and "great" animation effects appears together, it is not what I expect. (details show as below)
 - Test link: https://youtu.be/HIJAXM3FciU
 - I send the bug to slack technical channel, and get answer from Tom. Firstly, it might because that the collection of if statements is so complicate that it is hard for Unity to read and it’s bound to cause bugs. Secondly, I was using ```if(){}``` instead of ```else if(){}```, which means it can run after the first one, and they have a similar structure. That's the most probably reason why the two effects appear together. 
@@ -456,4 +454,4 @@ public void LightPosition()
 - By the game test, we find that we don't have a full and smooth game flow. It might influence players' game experience in the future. I need to add user interface, like pause menu, sound volume, quit game etc.
 
 # 5th-6th June - Build physical environment and test
-- modify code and scene depend on 
+- modify code and scene depend on physical environment. 
