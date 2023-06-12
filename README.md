@@ -1,4 +1,7 @@
 # A.C.E_Docs
+
+__Project name: Legend of Hanzi - Uniting the Past and Present__
+
 __Yining Jiang(Jenny)__: Unity content integration, Arduino code integration, Arduino to Unity communication.
 
 __Zhou Fang(Nora)__: Hardware code(Arduino), project planning, 3D modelling, Foley, physical device assembly.
