@@ -4,7 +4,7 @@
 ## 3rd May
 - First group discussion, define the prototype of project.
 - Timetable schedule and division of labour plan.
-- We are looking to build an iterative work base on last term's project _Tower of Babel_, which was inspired by [Tower babel](https://en.wikipedia.org/wiki/Tower_of_Babel). During the brainstorming, we discuss and confirm the game flow and approach of interaction. What's more, I found one of my classmate's project very interesting from last term's exhibition, the sensor he used was like a conductive rubber wire. We want to play with it as one of our sensors.
+- We are looking to build an iterative work base on last term's project _Tower of Babel_, which was inspired by [Tower babel](https://en.wikipedia.org/wiki/Tower_of_Babel). During the brainstorming, we discuss and confirm the game flow and approach of interaction. What's more, I found one of my classmate's([Gabriel Rudic](https://artslondon-my.sharepoint.com/:v:/g/personal/y_jiang0220224_arts_ac_uk/EfRrC6hSMUhJgM8BGRl52XIBT4Byz02Zg7eValBXO1kPYQ?e=A1NKO0)) project very interesting from last term's exhibition, the sensor he used was like a conductive rubber wire. We want to play with it as one of our sensors.
 ## 4th May
 Tutorial with Julia, I asked questions about 3D modelling and the sensor we are going to use, here are recourses and links that might be useful:
 - Arduino sensor: conductive wire, (https://www.adafruit.com/product/519), (https://learn.adafruit.com/thermistor), (https://www.st.com/en/mems-and-sensors/lis3dh.html)
