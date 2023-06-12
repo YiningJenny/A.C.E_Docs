@@ -14,6 +14,12 @@ __Collaborative completion__: Multiple testing, physical environment setup, and 
 
 __Inheritance from the previous term__: Inspiration from the Tower of Babel, improving signal transmission efficiency between Arduino and Unity, changes in code structure.
 
+## In the future
+- __Add more levels:__ for example, recognize people's movements with dynamic video, and take the viewer to write words with strokes.
+- __Adjust the force size:__ The current one is too small, so the game is too difficult for the audience.
+- __Adjust the image resource of the center tip:__ The size of the center needs to be the same as the size of the force. Help the audience better Orient themselves. We need to attach a sensor behind the curtain and shoot it with darts. There is a risk that the curtain will be damaged, so we can't use a normal projector.
+- __Wireless:__ Replace the sensors that are currently wired with Bluetooth sensors.
+
 ## Links and resources
 
 [GitHub link](https://github.com/YiningJenny/A.C.E_Docs.git)
