@@ -16,6 +16,8 @@ __Inheritance from the previous term__: Inspiration from the Tower of Babel, imp
 
 ## Links and resources
 
+[GitHub link](https://github.com/YiningJenny/A.C.E_Docs.git)
+
 [Video documentation](https://youtu.be/5GPBzBXBggk)
 
 [Design and development](https://github.com/YiningJenny/A.C.E_Docs/blob/main/Legend%20of%20hanzi.pdf)
