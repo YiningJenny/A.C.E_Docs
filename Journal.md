@@ -486,3 +486,6 @@ public void LightPosition()
 - I suggest that we can design the end screen of the game in a format similar to the rolling credits of a movie, and include photos showcasing behind-the-scenes moments of game production. This way, I would like to take the opportunity to express my gratitude to everyone who has put effort into this game.
 
 ![image](https://github.com/YiningJenny/A.C.E_Docs/assets/119497753/fc303f9e-7e6a-42b3-97f3-02879a525314)
+
+## 10-11th June - Final documentation and video editing
+- We discuss and record audio for the [video documentation](https://youtu.be/5GPBzBXBggk). Finish the final [design and development documentation](https://github.com/YiningJenny/A.C.E_Docs/blob/main/Legend%20of%20hanzi.pdf)
