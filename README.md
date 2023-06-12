@@ -13,10 +13,10 @@ Inheritance from previous term: Inspiration from the Tower of Babel, improving e
 
 ## Links and resources
 
-[My Unity original work](https://artslondon-my.sharepoint.com/:u:/g/personal/y_jiang0220224_arts_ac_uk/EbnSDUB0nF1KsYd72yg90KEBIYj-G84YDpwXd39hsaCtMA?e=Bj8cCW)
+[Video documentation](https://youtu.be/5GPBzBXBggk)
 
 [Design and development](https://github.com/YiningJenny/A.C.E_Docs/blob/main/Legend%20of%20hanzi.pdf)
 
-[Video documentation](https://youtu.be/5GPBzBXBggk)
-
 [My weekly journal](https://github.com/YiningJenny/A.C.E_Docs/blob/main/Journal.md)
+
+[My Unity original work](https://artslondon-my.sharepoint.com/:u:/g/personal/y_jiang0220224_arts_ac_uk/EbnSDUB0nF1KsYd72yg90KEBIYj-G84YDpwXd39hsaCtMA?e=Bj8cCW)
