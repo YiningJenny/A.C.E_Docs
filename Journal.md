@@ -1,11 +1,12 @@
-# Week 4
+# Week 4 - brainstorm
 - Discuss and define the iterative prototype of the project, divide the work and establish a timetable. 
 - Search for online resources to specify a project implementation plan.
-## 3rd May （待补充）
+## 3rd May
 - First group discussion, define the prototype of project.
 - Timetable schedule and division of labour plan.
+- We are looking to build an iterative work base on last term's project _Tower of Babel_, which was inspired by [Tower babel](https://en.wikipedia.org/wiki/Tower_of_Babel). During the brainstorming, we discuss and confirm the game flow and approach of interaction. What's more, I found one of my classmate's project very interesting from last term's exhibition, the sensor he used was like a conductive rubber wire. We want to play with it as one of our sensors.
 ## 4th May
-Tutorial with Julia, here are recourses and links that might be useful:
+Tutorial with Julia, I asked questions about 3D modelling and the sensor we are going to use, here are recourses and links that might be useful:
 - Arduino sensor: conductive wire, (https://www.adafruit.com/product/519), (https://learn.adafruit.com/thermistor), (https://www.st.com/en/mems-and-sensors/lis3dh.html)
 - Arduino sensor: string motor sensor,
 - [Unique texture in blender](https://www.youtube.com/watch?v=lAnUI-eTefE)
