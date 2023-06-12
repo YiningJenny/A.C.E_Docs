@@ -19,6 +19,7 @@ Tutorial with Julia, here are recourses and links that might be useful:
 ## 9th May
 - I interview some tutors and friends who does't know Chinese words, and get conclusions like below:
 > Suan made a lot of Chinese friends and started focusing on Chinese idols recently, so she really wanted to learn Chinese. But she finds Chinese characters confusing because they are so sophisticated. She thinks hieroglyphics help to memorize Chinese characters.
+
 > Lieven's brother lives in China for decades, but he finds it difficult to remember Chinese words without using them continuously. He believes that understanding the evolution of Chinese characters through hieroglyphics is a very effective way to memorize them.
 
 ## 10th May
