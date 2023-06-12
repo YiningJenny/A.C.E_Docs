@@ -1,7 +1,7 @@
 # A.C.E_Docs
 Yining Jiang(Jenny): Unity content integration, Arduino code integration, Arduino to Unity communication.
 
-Zhou Fang(Nora): Hardware code(Arduino), project planning, 3D modeling, Foley, physical device assembly.
+Zhou Fang(Nora): Hardware code(Arduino), project planning, 3D modelling, Foley, physical device assembly.
 
 Xiao Liang(Luna): Audio assets, visual effects assets, 3D modeling, video shooting and editing, documentation.
 
