@@ -11,12 +11,19 @@ Tutorial with Julia, here are recourses and links that might be useful:
 - [Unique texture in blender](https://www.youtube.com/watch?v=lAnUI-eTefE)
 - [Blender how to export FBX with texture](https://www.youtube.com/watch?v=kEP34CbPWUo)
 - [Import model with texture into Unity](https://www.cgtrader.com/tutorials/1542-importing-an-fbx-file-into-unity-with-textures)
-# Week 5 - ideation and concept
-- Defining the art style， detailing project plan
-## 10th May （待补充）
-- 确定要建模的字
-- 确定游戏流程
-- 确定美术风格
+
+# Week 5 - art style and interview
+- Defining the art style，detailing project plan
+- Confirm the hieroglyphs we want to use in game, and chose one of three modelling styles that suited us.
+
+## 9th May
+- I interview some tutors and friends who does't know Chinese words, and get conclusions like below:
+> Suan made a lot of Chinese friends and started focusing on Chinese idols recently, so she really wanted to learn Chinese. But she finds Chinese characters confusing because they are so sophisticated. She thinks hieroglyphics help to memorize Chinese characters.
+> Lieven's brother lives in China for decades, but he finds it difficult to remember Chinese words without using them continuously. He believes that understanding the evolution of Chinese characters through hieroglyphics is a very effective way to memorize them.
+
+## 10th May
+- Comfirm the art style and flow of our game. 
+
 # Week 6 - Arduino and Unity Exploration
 - Determining the final output model for the project, identifying test and filming locations and purchasing materials
 - Beginning of Arduino and Unity exploring.
