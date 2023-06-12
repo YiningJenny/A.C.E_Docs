@@ -18,3 +18,5 @@ Inheritance from previous term: Inspiration from the Tower of Babel, improving e
 [Design and development](https://github.com/YiningJenny/A.C.E_Docs/blob/main/Legend%20of%20hanzi.pdf)
 
 [Video documentation](https://youtu.be/5GPBzBXBggk)
+
+[My weekly journal](https://github.com/YiningJenny/A.C.E_Docs/blob/main/Journal.md)
