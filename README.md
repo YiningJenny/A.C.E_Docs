@@ -1,15 +1,15 @@
 # A.C.E_Docs
-Yining Jiang(Jenny): Unity content integration, Arduino code integration, Arduino to Unity communication.
+__Yining Jiang(Jenny)__: Unity content integration, Arduino code integration, Arduino to Unity communication.
 
-Zhou Fang(Nora): Hardware code(Arduino), project planning, 3D modelling, Foley, physical device assembly.
+__Zhou Fang(Nora)__: Hardware code(Arduino), project planning, 3D modelling, Foley, physical device assembly.
 
-Xiao Liang(Luna): Audio assets, visual effects assets, 3D modelling, video shooting and editing, documentation.
+__Xiao Liang(Luna)__: Audio assets, visual effects assets, 3D modelling, video shooting and editing, documentation.
 
-Han Hsun Shih(Amy): Art assets.
+__Han Hsun Shih(Amy)__: Art assets.
 
-Collaborative completion: Multiple testing, physical environment setup, and small-scale player experience exhibition.
+__Collaborative completion__: Multiple testing, physical environment setup, and small-scale player experience exhibition.
 
-Inheritance from the previous term: Inspiration from the Tower of Babel, improving signal transmission efficiency between Arduino and Unity, changes in code structure.
+__Inheritance from the previous term__: Inspiration from the Tower of Babel, improving signal transmission efficiency between Arduino and Unity, changes in code structure.
 
 ## Links and resources
 
