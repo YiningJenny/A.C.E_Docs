@@ -9,7 +9,7 @@ Han Hsun Shih(Amy): Art assets.
 
 Collaborative completion: Multiple testing, physical environment setup, and small-scale player experience exhibition.
 
-Previous semester: Inspiration from the Tower of Babel, efficiency of signal transmission between Arduino and Unity, changes in code structure.
+Inheritance from previous term: Inspiration from the Tower of Babel, improving efficiency of signal transmission between Arduino and Unity, changes in code structure.
 
 ## Links and resources
 
